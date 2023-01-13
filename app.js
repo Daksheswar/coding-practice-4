@@ -13,8 +13,8 @@ const initializeDBAndServer = async () => {
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(3000, () => {
-      console.log("server is running at http://localhost:3000/");
+    app.listen(2000, () => {
+      console.log("server is running at http://localhost:2000/");
     });
   } catch (e) {
     console.log(e.message);
@@ -47,15 +47,14 @@ app.get("/players/", async (request, response) => {
 //Post
 app.post("/players/", async (request, response) => {
   const playerDetails = request.body;
-  const { playerId, playerName, jerseyNumber, role } = playerDetails;
+  const { playerName, jerseyNumber, role } = playerDetails;
   const addPlayer = `
     INSERT INTO cricket_team
-    (playerId,playerName,jerseyNumber,role)
+    (player_name,jersey_number,role)
     VALUES
-    ('${playerId}',${playerName},${jerseyNumber},
-    ${role});`;
+    ("${playerName}",${jerseyNumber},
+    "${role}");`;
   const dpResponse = await db.run(addPlayer);
-  const playId = dpResponse.lastID;
-  response.send(playId);
-  console.log("hi");
+  const playerId = dpResponse.lastID;
+  response.send("Player Added to Team");
 });

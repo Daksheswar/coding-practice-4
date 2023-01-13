@@ -1,8 +1,8 @@
-GET http://localhost:3000/players/
+GET http://localhost:2000/players/
 
 ###
 
-POST  http://localhost:3000/players/
+POST  http://localhost:2000/players/
 Content-Type: : application/json
 
 {

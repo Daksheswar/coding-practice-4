@@ -13,8 +13,8 @@ const initializeDBAndServer = async () => {
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(2000, () => {
-      console.log("server is running at http://localhost:2000/");
+    app.listen(1000, () => {
+      console.log("server is running at http://localhost:1000/");
     });
   } catch (e) {
     console.log(e.message);
@@ -58,3 +58,4 @@ app.post("/players/", async (request, response) => {
   const playerId = dpResponse.lastID;
   response.send("Player Added to Team");
 });
+module.exports = app;
